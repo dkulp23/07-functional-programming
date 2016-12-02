@@ -83,11 +83,11 @@ Article.allAuthors = function() {
   })
       //then chain reduce, and set the accumulator to an array
       // to build a unique list of author names.
-  .reduce(function(accumulator, current) {
-    if(accumulator.indexOf(current) < 0) {
-      accumulator.push(current);
+  .reduce(function(authorArray, thisAuthor) {
+    if(authorArray.indexOf(thisAuthor) < 0) {
+      authorArray.push(thisAuthor);
     }
-    return accumulator;
+    return authorArray;
   }, [ ])
 }
 
