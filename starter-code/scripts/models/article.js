@@ -79,14 +79,14 @@ Article.allAuthors = function() {
   // TODO: return a mapped collection
       // with just the author names
   return Article.allArticles.map(function(thisArticle) {
-    console.log(thisArticle.author)
     return thisArticle.author;
   })
       //then chain reduce, and set the accumulator to an array
       // to build a unique list of author names.
   .reduce(function(accumulator, current) {
-    accumulator.push(current);
-    // console.log(accumulator);
+    if(accumulator.indexOf(current) < 0) {
+      accumulator.push(current);
+    }
     return accumulator;
   }, [ ])
 }
