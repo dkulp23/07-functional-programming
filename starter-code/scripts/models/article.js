@@ -98,10 +98,17 @@ Article.numWordsByAuthor = function() {
   return Article.allAuthors().map(function(currentAuthor) {
     return {
       name: currentAuthor,
-      numWords: Article.allWords().filter(function(curArticle) {
+      numWords: Article.allArticles.map(function(curArticle) {
         // what do we return here to check for matching authors?
       // .map() to return the author's word count for each article body (you may split or regexp)
       // .reduce() to squash this array into one big number, per author.
+        if(curArticle.author === currentAuthor) {
+          return curArticle.body.match(/\w+/g).length;
+        } else {
+          return 0;
+        }
+      }).reduce(function(allTheWords, thisArticleWords) {
+        return allTheWords + thisArticleWords;
       })
     }
   });
