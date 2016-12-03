@@ -109,10 +109,30 @@ Article.numWordsByAuthor = function() {
         }
       }).reduce(function(allTheWords, thisArticleWords) {
         return allTheWords + thisArticleWords;
-      })
+      }),
+      numArticles: Article.allArticles.filter(function(currentArticle) {
+        if(currentArticle.author === currentAuthor) {
+          return currentArticle.author;
+        } else {
+          return 0;
+        }
+      }).length
     }
   });
 }
 
+// Article.numArticlesByAuthor = function() {
+//   return Article.allAuthors().map(function(author) {
+//     return {
+//       name: author,
+//       numArticles: Article.allArticles.filter(function(currentArticle) {
+//         return currentArticle.author;
+//       }).length
+//       // .reduce(function(totalArticles, thisArticle){
+//         // return totalArticles + thisArticle;
+//       // })
+//     }
+//   });
+// }
 module.Article = Article;
 })(window);
