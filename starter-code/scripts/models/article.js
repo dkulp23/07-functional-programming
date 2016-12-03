@@ -119,16 +119,16 @@ Article.numWordsByAuthor = function() {
       }).length,
       totalCategories: Article.allArticles.map(function(currentArticle) {
         if (currentArticle.author === currentAuthor) {
-        return currentArticle.category;
-        // console.log(currentArticle.category);
+          return currentArticle.category;
         }
       })
-      .reduce(function(categoryArray, thisCategory){
+      .reduce(function(categoryArray, thisCategory) {
         if (categoryArray.indexOf(thisCategory) < 0) {
           categoryArray.push(thisCategory);
         }
         return categoryArray;
-      }, [ ]).join(", ")
+      }, [ ])
+      .join(', ')
     }
   });
 }
