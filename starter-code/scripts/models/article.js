@@ -116,23 +116,22 @@ Article.numWordsByAuthor = function() {
         } else {
           return 0;
         }
-      }).length
+      }).length,
+      totalCategories: Article.allArticles.map(function(currentArticle) {
+        if (currentArticle.author === currentAuthor) {
+        return currentArticle.category;
+        // console.log(currentArticle.category);
+        }
+      })
+      .reduce(function(categoryArray, thisCategory){
+        if (categoryArray.indexOf(thisCategory) < 0) {
+          categoryArray.push(thisCategory);
+        }
+        return categoryArray;
+      }, [ ]).join(", ")
     }
   });
 }
 
-// Article.numArticlesByAuthor = function() {
-//   return Article.allAuthors().map(function(author) {
-//     return {
-//       name: author,
-//       numArticles: Article.allArticles.filter(function(currentArticle) {
-//         return currentArticle.author;
-//       }).length
-//       // .reduce(function(totalArticles, thisArticle){
-//         // return totalArticles + thisArticle;
-//       // })
-//     }
-//   });
-// }
 module.Article = Article;
 })(window);
