@@ -111,11 +111,7 @@ Article.numWordsByAuthor = function() {
         return allTheWords + thisArticleWords;
       }),
       numArticles: Article.allArticles.filter(function(currentArticle) {
-        if(currentArticle.author === currentAuthor) {
-          return currentArticle.author;
-        } else {
-          return 0;
-        }
+        return currentArticle.author === currentAuthor;
       }).length,
       totalCategories: Article.allArticles.map(function(currentArticle) {
         if (currentArticle.author === currentAuthor) {
